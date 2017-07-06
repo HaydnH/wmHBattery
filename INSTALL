@@ -1,0 +1,24 @@
+Installation instructions for wmHBattery.
+
+Requirements
+--------------------------------------------------------------
+wmHBattery requires the following libraries:
+
+    X11/X.h (xorg-x11-proto-devel)
+    X11/xpm.h (libXpm-devel)
+    X11/extensions/shape.h (libXext-devel)
+    cairo.h (cairo-devel)
+
+DNF Command for Fedora users:
+
+    # dnf install xorg-x11-proto-devel libXpm-devel libXext-devel cairo-devel
+
+
+Installation
+--------------------------------------------------------------
+1) git clone https://github.com/HaydnH/wmHBattery.git
+2) cd wmHBattery/src/
+3) make 
+4) make install (must be root) 
+5) wmHBattery & (or 'wmHBattery -h' for help, or 'man wmHBattery' for the man page)
+

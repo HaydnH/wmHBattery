@@ -1,0 +1,51 @@
+Hints for wmHBattery
+
+Generic.
+--------
+% wmHBattery -h
+
+usage: wmHBattery [-e <Command>] [-p] [-l]
+  [-s2 <Percent>] [-s3 <Percent>] [-s4 <Percent>] [-s5 <Percent>]
+  [-bg <Colour>] [-bs <Colour>] [-be <Colour>] [-ps <Colour>] [-pe <Colour>]
+  [-fs1 <Colour>] [-fs2 <Colour>] [-fs3 <Colour>] [-fs4 <Colour>] [-fs5 <Colour>]
+  [-fe1 <Colour>] [-fe2 <Colour>] [-fe3 <Colour>] [-fe4 <Colour>] [-fe5 <Colour>]
+  [-ba <Degrees>] [-fa <Degrees>] [-pa <Degrees>] [-h]
+
+   -e <Command>    Command to execute via double click of mouse button 1
+   -p              Show a plug symbol when charging (Default)
+   -l              Show a lightning symbol when charging
+   -s2 <Percent>   Percent at which to change battery fill color (Default: 10)
+   -s3 <Percent>   Percent at which to change battery fill color (Default: 25)
+   -s4 <Percent>   Percent at which to change battery fill color (Default: 50)
+   -s5 <Percent>   Percent at which to change battery fill color (Default: 75)
+   -bg <Colour>    Background color (Default: #d2dae4)
+   -bs <Colour>    Battery border gradient start color (Defailt: #939494)
+   -be <Colour>    Battery border gradient end color (Defailt: #2f2f2f)
+   -ps <Colour>    Charing symbol gradient start color (Default: #939494)
+   -pe <Colour>    Charing symbol gradient end color (Default: #2f2f2f)
+   -fs1 <Colour>   Fill gradient start color when charge level > 0% (Defult: #e99494)
+   -fs2 <Colour>   Fill gradient start color when charge level > s2 (Defult: #ebc984)
+   -fs3 <Colour>   Fill gradient start color when charge level > s3 (Defult: #dcc200)
+   -fs4 <Colour>   Fill gradient start color when charge level > s4 (Defult: #bcd788)
+   -fs5 <Colour>   Fill gradient start color when charge level > s5 (Defult: #72ce46)
+   -fe1 <Colour>   Fill gradient end color when charge level > 0% (Defult: #d63c3c)
+   -fe2 <Colour>   Fill gradient end color when charge level > s2 (Defult: #d59a21)
+   -fe3 <Colour>   Fill gradient end color when charge level > s3 (Defult: #cfb505)
+   -fe4 <Colour>   Fill gradient end color when charge level > s4 (Defult: #7ea336)
+   -fe5 <Colour>   Fill gradient end color when charge level > s5 (Defult: #218c22)
+   -ba <Degrees>   Angle of the battery border gradient (Default: 90)
+   -fa <Degrees>   Angle of the battery fill gradient (Default: 90)
+   -pa <Degrees>   Angle of the charging symbol gradient (Default: 90)
+   -h              Show this usage message
+
+Example: wmHBattery -bg "#0000FF" -l -fa 45  
+
+
+WindowMaker.
+------------
+In WindowMaker simply drag and drop the wmHBattery App on the WindowMaker Dock or Clip.
+
+
+
+
+

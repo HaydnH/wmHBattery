@@ -1,0 +1,95 @@
+.TH wmHBattery 1 "06 JULY 2017" 
+.SH NAME
+wmHBattery \- Battery Monitor Window Maker Dockapp
+.SH SYNOPSIS
+.B wmHBattery
+[-f <font>] [-fs <size>] [-sb] [-sf] [-ls2 <percent>] [-ls3 <percent>] [-ls4 <percent>] [-ls5 <percent] [-eb <Color>] [-ef <Color>] [-lb <Color>] [-lfg <Color>] [-lfs1 <Color>] [-lfe1 <Color>] [-lfs2 <Color>] [-lfe2 <Color>] [-lfs3 <Color>] [-lfe3 <Color>] [-lfs4 <Color>] [-lfe4 <Color>] [-lfs5 <Color>] [-lfe5 <Color>] [-e <Command>] [in] [-w] [-c <Command] [-h]
+.SH DESCRIPTION
+.PP
+wmHBattery is a simple battery monitor for use as a Window Maker dockapp. 
+.SH OPTIONS
+.TP
+.B \-e <Command>
+Command to execute when the dockapp receives a double click of mouse button 1.
+.TP
+.B \-p
+Show a plug symbol when charging. (Default)
+.TP
+.B \-l
+Show a lightning symbol when charging.
+.TP
+.B \-s2 <Percent>
+By default, the battery fill changes color at 0%, 10%, 25%, 50% and 75% steps. The -ls2 flag allows you to change the percentage of the second step to a value of your choice. Note, there is no -ls1 flag as the 0% -> ls2 range always starts at 0%. (Default: 10)
+.TP
+.B \-s3 <Percent>
+See -ls2, -ls3 allows you to change the third step to a value of your choice. (Default: 25)
+.TP
+.B \-s4 <Percent>
+See -ls2, -ls4 allows you to change the third step to a value of your choice. (Default: 50)
+.TP
+.B \-s5 <Percent>
+See -ls2, -ls5 allows you to change the third step to a value of your choice. (Default: 80)
+.TP
+.B \-bg <Colour>
+Change the background color for the dockapp. (Default: #d2dae4)
+.TP
+.B \-bs <Colour>
+The color of the battery border is a linear gradient. The -b{s,e} flags allow you to change the start and end colors of the gradient. (Default: #939494)
+.TP
+.B \-be <Colour>
+See -bs, battery border gradient end color. (Default: #2f2f2f)
+.TP
+.B \-ps <Colour>
+The color of the charging symbol is a linear gradient. The -p{s,e} flags allow you to change the start and end colors of the gradient. (Default: #939494)
+.TP
+.B \-pe <Colour>
+See -ps charging symbol gradient end color. (Default: #2f2f2f)
+.TP
+.B \-fs1 <Colour>
+The fill color of the battery logo is a linear gradient. The -f{s,e}{1-5} flags allow you to change the start and end colors of the gradient for each battery charge step set with the corresponding -s{2-5} flags. For example, using the default change steps, using '-fs1 "#ff0000" -fe1 "#0000ff"' would change the battery fill to a red->blue gradient when the battery charge is between 0 & 10%. (Default: #e99494)
+.TP
+.B \-fs2 <Colour>
+See \-fs1, changes the gradient start color for the second battery charge step. (Default: #ebc984)
+.TP
+.B \-fs3 <Colour>
+See \-fs1, changes the gradient start color for the third battery charge step. (Default: #dcc200)
+.TP
+.B \-fs4 <Colour>
+See \-fs1, changes the gradient start color for the fourth battery charge step. (Default: #bcd788)
+.TP
+.B \-fs5 <Colour>
+See \-fs1, changes the gradient start color for the fifth battery charge step. (Default: #72ce46)
+.TP
+.B \-fe1 <Colour>
+See \-fs1, changes the gradient end color for the first battery charge step. (Default: #d63c3c)
+.TP
+.B \-fe2 <Colour>
+See \-fs1, changes the gradient end color for the second battery charge step. (Default: #d59a21)
+.TP
+.B \-fe3 <Colour>
+See \-fs1, changes the gradient end color for the third battery charge step. (Default: #cfb505)
+.TP
+.B \-fe4 <Colour>
+See \-fs1, changes the gradient end color for the fourth battery charge step. (Default: #7ea336)
+.TP
+.B \-fe5 <Colour>
+See \-fs1, changes the gradient end color for the fifth battery charge step. (Default: #218c22)
+.TP
+.B \-ba <Degrees>
+The battery outline gradient is vertically linear by default, the -ba flag allows you to change the angle of the gradient. (Deafult: 90)
+.TP
+.B \-fa <Degrees>
+The battery fill gradient is vertically linear by default, the -fa flag allows you to change the angle of the
+gradient. (Deafult: 90)
+.TP
+.B \-pa <Degrees>
+The charging symbol gradient is vertically linear by default, the -pa flag allows you to change the angle of the
+gradient. (Deafult: 90)
+.TP
+.B \-h
+Show the usage page.
+.TP
+.SH BUGS
+Please report bugs at: https://github.com/HaydnH/wmHBattery/issues
+.SH AUTHOR
+Haydn Haines <haydnhdev@gmail.com>
