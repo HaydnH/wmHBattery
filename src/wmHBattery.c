@@ -72,7 +72,7 @@ char	ExecuteCommand[1024];
 char    TimeColor[30]    	= "#ffff00";
 char    BackgroundColor[30]    	= "#181818";
 char	batState[15], batStatus[40], batCapacity[40];
-int	batLevel;
+int	batLevel = 0;
 int     bs2 = 10, bs3 = 25, bs4 = 50, bs5 = 75, pt = 0, bfA = 90, cfA = 90, pfA = 90;
 
 PatCol  bg, bfs, bfe, cfs, cfe, pfs, pfe, cfs1, cfe1, cfs2, cfe2, cfs3, cfe3, cfs4, cfe4, cfs5, cfe5;
@@ -120,13 +120,15 @@ void findBatt() {
 void getBatInfo() {
   FILE 	*fp;
   char	*ptr;
+  int tbatLevel;
 
   // Get battery Level...
-  batLevel=0;
   fp = fopen(batCapacity, "r");
   fgets(batState , 4, fp);
   strtok(batState, "\n");
-  batLevel = strtol(batState, &ptr, 10);
+  tbatLevel = strtol(batState, &ptr, 10);
+  if (tbatLevel >= 0 && tbatLevel <= 100)
+    batLevel = tbatLevel;
   fclose(fp);
 
   // ... and charging/discharging state
