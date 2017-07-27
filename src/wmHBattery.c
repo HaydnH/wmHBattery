@@ -80,12 +80,15 @@ PatCol  bg, bfs, bfe, cfs, cfe, pfs, pfe, cfs1, cfe1, cfs2, cfe2, cfs3, cfe3, cf
 
 // Function to convert hex color to rgb values
 void h2dCol(PatCol *col) {
-  char hCol[2];
+  char hCol[3]; 
   strncpy(hCol, col->h+1, 2);
+  hCol[2] = '\0';
   col->r = strtol(hCol, NULL, 16)/255.0;
   strncpy(hCol, col->h+3, 2);
+  hCol[2] = '\0';
   col->g = strtol(hCol, NULL, 16)/255.0;
   strncpy(hCol, col->h+5, 2);
+  hCol[2] = '\0';
   col->b = strtol(hCol, NULL, 16)/255.0;
 }
 
