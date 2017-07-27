@@ -1,4 +1,4 @@
-## wmHBattery-1.00 release
+## wmHBattery-1.01 release
 Author: Haydn Haines
 		
   

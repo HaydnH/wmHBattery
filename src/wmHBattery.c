@@ -21,7 +21,10 @@
  *
  *      Changes:
  *
- *	Version 1.00  -	released May 4th, 2017
+ *	Version 1.00  - Released. (2017-06-27)
+ *
+ *	Version 1.01  - Fixed an issue preventing Cairo drawing due to non-teminated
+ *                      colour strings. (2017-07-27)
  *
  */
 
@@ -46,7 +49,7 @@
 
 // Delay between refreshes (in microseconds) 
 #define DELAY 10000L
-#define WMHBATTERY_VERSION "1.00"
+#define WMHBATTERY_VERSION "1.01"
 
 // Color struct, h = hex (#000000), rgb components in range 0-1.
 struct patCol {

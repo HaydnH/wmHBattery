@@ -2,5 +2,9 @@ wmHBattery changes.
 
 Version		Description
 ---------------------------------------------------------------------------------
-Version 1.0  	- released 2017-07-06.
+Version 1.00  	- Released. (2017-07-06)
+
+Version 1.01    - Fixed an issue preventing Cairo drawing due to non-teminated
+                  colour strings. (2017-07-27)
+
 
