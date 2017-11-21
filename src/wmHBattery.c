@@ -51,7 +51,7 @@
 #define DELAY 10000L
 #define WMHBATTERY_VERSION "1.01"
 
-// Color struct, h = hex (#000000), rgb components in range 0-1.
+// Color struct, h = hex (000000), rgb components in range 0-1.
 struct patCol {
   char  h[7];
   float r,g,b;
@@ -84,13 +84,13 @@ PatCol  bg, bfs, bfe, cfs, cfe, pfs, pfe, cfs1, cfe1, cfs2, cfe2, cfs3, cfe3, cf
 // Function to convert hex color to rgb values
 void h2dCol(PatCol *col) {
   char hCol[3]; 
-  strncpy(hCol, col->h+1, 2);
+  strncpy(hCol, col->h, 2);
   hCol[2] = '\0';
   col->r = strtol(hCol, NULL, 16)/255.0;
-  strncpy(hCol, col->h+3, 2);
+  strncpy(hCol, col->h+2, 2);
   hCol[2] = '\0';
   col->g = strtol(hCol, NULL, 16)/255.0;
-  strncpy(hCol, col->h+5, 2);
+  strncpy(hCol, col->h+4, 2);
   hCol[2] = '\0';
   col->b = strtol(hCol, NULL, 16)/255.0;
 }
@@ -272,23 +272,23 @@ int main(int argc, char *argv[]) {
   findBatt();
 
   // Default Colors
-  strcpy(bg.h, "#d2dae4");
-  strcpy(bfs.h, "#939494");
-  strcpy(bfe.h, "#2f2f2f");
-  strcpy(cfs.h, "#72ce46");
-  strcpy(cfe.h, "#218c22");
-  strcpy(pfs.h, "#939494");
-  strcpy(pfe.h, "#2f2f2f");
-  strcpy(cfs1.h, "#e99494");
-  strcpy(cfs2.h, "#ebc984");
-  strcpy(cfs3.h, "#dcc200");
-  strcpy(cfs4.h, "#bcd788");
-  strcpy(cfs5.h, "#72ce46");
-  strcpy(cfe1.h, "#d63c3c");
-  strcpy(cfe2.h, "#d59a21");
-  strcpy(cfe3.h, "#cfb505");
-  strcpy(cfe4.h, "#7ea336");
-  strcpy(cfe5.h, "#218c22");
+  strcpy(bg.h, "d2dae4");
+  strcpy(bfs.h, "939494");
+  strcpy(bfe.h, "2f2f2f");
+  strcpy(cfs.h, "72ce46");
+  strcpy(cfe.h, "218c22");
+  strcpy(pfs.h, "939494");
+  strcpy(pfe.h, "2f2f2f");
+  strcpy(cfs1.h, "e99494");
+  strcpy(cfs2.h, "ebc984");
+  strcpy(cfs3.h, "dcc200");
+  strcpy(cfs4.h, "bcd788");
+  strcpy(cfs5.h, "72ce46");
+  strcpy(cfe1.h, "d63c3c");
+  strcpy(cfe2.h, "d59a21");
+  strcpy(cfe3.h, "cfb505");
+  strcpy(cfe4.h, "7ea336");
+  strcpy(cfe5.h, "218c22");
 
   // Parse any command line arguments.
   ParseCMDLine(argc, argv);
@@ -371,16 +371,14 @@ int main(int argc, char *argv[]) {
 
 // Function to check a valid #000000 color is provided
 void valid_color(char argv[10], char ccol[7]) {
-  char tcol[6];
   if (strcmp(ccol, "missing") == 0 ||ccol[0] == '-' ) {
-    fprintf(stderr, "ERROR: No color found following %s flag, must have quotes or escaped #.\n", argv);
+    fprintf(stderr, "ERROR: No color found following %s flag.\n", argv);
     print_usage();
     exit(-1);
   }
 
-  strcpy(tcol,ccol+1);
-  if (strlen(ccol) != 7 || tcol[strspn(tcol, "0123456789abcdefABCDEF")] != 0) {
-    fprintf(stderr, "ERROR: Invalid color following %s flag, should be valid hex \"#000000\" format.\n", argv);
+  if (strlen(ccol) != 6 || ccol[strspn(ccol, "0123456789abcdefABCDEF")] != 0) {
+    fprintf(stderr, "ERROR: Invalid color following %s flag, should be valid hex \"000000\" format.\n", argv);
     print_usage();
     exit(-1);
   }
@@ -551,26 +549,26 @@ void print_usage(){
   printf("   -s3 <Percent>   Percent at which to change battery fill color (Default: 25)\n");
   printf("   -s4 <Percent>   Percent at which to change battery fill color (Default: 50)\n");
   printf("   -s5 <Percent>   Percent at which to change battery fill color (Default: 75)\n");
-  printf("   -bg <Colour>    Background color (Default: #d2dae4)\n");
-  printf("   -bs <Colour>    Battery border gradient start color (Defailt: #939494)\n");
-  printf("   -be <Colour>    Battery border gradient end color (Defailt: #2f2f2f)\n");
-  printf("   -ps <Colour>    Charging symbol gradient start color (Default: #939494)\n");
-  printf("   -pe <Colour>    Charging symbol gradient end color (Default: #2f2f2f)\n");
-  printf("   -fs1 <Colour>   Fill gradient start color when charge level > 0%% (Defult: #e99494)\n");
-  printf("   -fs2 <Colour>   Fill gradient start color when charge level > s2 (Defult: #ebc984)\n");
-  printf("   -fs3 <Colour>   Fill gradient start color when charge level > s3 (Defult: #dcc200)\n");
-  printf("   -fs4 <Colour>   Fill gradient start color when charge level > s4 (Defult: #bcd788)\n");
-  printf("   -fs5 <Colour>   Fill gradient start color when charge level > s5 (Defult: #72ce46)\n");
-  printf("   -fe1 <Colour>   Fill gradient end color when charge level > 0%% (Defult: #d63c3c)\n");
-  printf("   -fe2 <Colour>   Fill gradient end color when charge level > s2 (Defult: #d59a21)\n");
-  printf("   -fe3 <Colour>   Fill gradient end color when charge level > s3 (Defult: #cfb505)\n");
-  printf("   -fe4 <Colour>   Fill gradient end color when charge level > s4 (Defult: #7ea336)\n");
-  printf("   -fe5 <Colour>   Fill gradient end color when charge level > s5 (Defult: #218c22)\n");
+  printf("   -bg <Colour>    Background color (Default: d2dae4)\n");
+  printf("   -bs <Colour>    Battery border gradient start color (Defailt: 939494)\n");
+  printf("   -be <Colour>    Battery border gradient end color (Defailt: 2f2f2f)\n");
+  printf("   -ps <Colour>    Charging symbol gradient start color (Default: 939494)\n");
+  printf("   -pe <Colour>    Charging symbol gradient end color (Default: 2f2f2f)\n");
+  printf("   -fs1 <Colour>   Fill gradient start color when charge level > 0%% (Defult: e99494)\n");
+  printf("   -fs2 <Colour>   Fill gradient start color when charge level > s2 (Defult: ebc984)\n");
+  printf("   -fs3 <Colour>   Fill gradient start color when charge level > s3 (Defult: dcc200)\n");
+  printf("   -fs4 <Colour>   Fill gradient start color when charge level > s4 (Defult: bcd788)\n");
+  printf("   -fs5 <Colour>   Fill gradient start color when charge level > s5 (Defult: 72ce46)\n");
+  printf("   -fe1 <Colour>   Fill gradient end color when charge level > 0%% (Defult: d63c3c)\n");
+  printf("   -fe2 <Colour>   Fill gradient end color when charge level > s2 (Defult: d59a21)\n");
+  printf("   -fe3 <Colour>   Fill gradient end color when charge level > s3 (Defult: cfb505)\n");
+  printf("   -fe4 <Colour>   Fill gradient end color when charge level > s4 (Defult: 7ea336)\n");
+  printf("   -fe5 <Colour>   Fill gradient end color when charge level > s5 (Defult: 218c22)\n");
   printf("   -ba <Degrees>   Angle of the battery border gradient (Default: 90)\n");
   printf("   -fa <Degrees>   Angle of the battery fill gradient (Default: 90)\n");
   printf("   -pa <Degrees>   Angle of the charging symbol gradient (Default: 90)\n");
   printf("   -h              Show this usage message\n");
-  printf("\nExample: wmHBattery -bg \"#0000FF\" -l -fa 45  \n\n");
+  printf("\nExample: wmHBattery -bg \"0000FF\" -l -fa 45  \n\n");
 
 }
 
