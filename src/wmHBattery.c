@@ -98,18 +98,20 @@ void h2dCol(PatCol *col) {
 
 // Find the battery files location
 void findBatt() {
-  char  testPath[40] = "/sys/class/power_supply/BAT", batPath[40], c[2] = "0";
+  char  testPath[40] = "/sys/class/power_supply/BAT", batPath[40], c[3] = "0";
   int i = 0; 
+  DIR *dir = NULL; 
 
   // Find a the battery
-  while (!opendir(batPath)) {
+  while (!dir) {
     sprintf(c,"%d",i);
     strcpy(batPath, testPath);
     strcat(batPath, c);
+    dir = opendir(batPath);
     i++;
 
     // Exit if no batterys found
-    if (i > 9) {
+    if (i > 10) {
       fprintf(stderr, "ERROR: Can't find a battery at /sys/class/power_supply/BAT[0-9].\n");
       exit(1);
     }
@@ -119,6 +121,7 @@ void findBatt() {
   strcat(batCapacity, "/capacity");
   strcpy(batStatus, batPath);
   strcat(batStatus, "/status");
+  closedir(dir);
 }
 
 
@@ -154,7 +157,6 @@ void drawBatt(cairo_t *ctx) {
   int plugH = 20, plugW = 10, plugY = (winH - plugH)/2 + capH - 2, plugX = (winW - plugW)/2;
   int batCX = bsX + batW/2, batCY = bsY + batH/2, grX, grY, fH = batH - (batB*2);
   double degrees = M_PI / 180.0;
-
 
   // Re-enable antialiasing
   cairo_set_antialias(ctx, CAIRO_ANTIALIAS_BEST);
@@ -253,6 +255,9 @@ void drawBatt(cairo_t *ctx) {
 
     }
   }
+  cairo_pattern_destroy(bPat);
+  cairo_pattern_destroy(cPat);
+  cairo_pattern_destroy(pPat);
 }
 
 
